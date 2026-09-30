@@ -1,0 +1,17 @@
+# MySQL / local configuration
+config.properties
+
+# JDBC driver
+lib/*.jar
+
+# Java compiled files
+*.class
+out/
+bin/
+
+# VS Code
+.vscode/
+
+# OS files
+.DS_Store
+Thumbs.db

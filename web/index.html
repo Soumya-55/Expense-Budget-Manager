@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Expense & Budget Manager</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>💰 Expense &amp; Budget Manager</h1>
+  <label>Month <input type="month" id="month"></label>
+</header>
+
+<main>
+  <section class="cards">
+    <div class="card income"><span>Income</span><b id="sIncome">0</b></div>
+    <div class="card expense"><span>Expenses</span><b id="sExpense">0</b></div>
+    <div class="card balance"><span>Balance</span><b id="sBalance">0</b></div>
+  </section>
+
+  <div class="grid">
+    <div class="col">
+      <section class="panel">
+        <h2 id="formTitle">Add Transaction</h2>
+        <div class="form" id="txForm">
+          <div class="toggle">
+            <label><input type="radio" name="type" value="EXPENSE" checked> Expense</label>
+            <label><input type="radio" name="type" value="INCOME"> Income</label>
+          </div>
+          <input type="number" id="amount" placeholder="Amount" step="0.01" min="0">
+          <input type="text" id="category" placeholder="Category (e.g. Food)" list="cats" maxlength="50">
+          <datalist id="cats">
+            <option>Food</option><option>Rent</option><option>Transport</option><option>Shopping</option>
+            <option>Bills</option><option>Health</option><option>Entertainment</option><option>Salary</option><option>Other</option>
+          </datalist>
+          <input type="text" id="description" placeholder="Description (optional)" maxlength="255">
+          <input type="date" id="date">
+          <div class="row">
+            <button id="saveTx" class="primary">Save</button>
+            <button id="cancelEdit" class="ghost" hidden>Cancel</button>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <h2>Monthly Budgets</h2>
+        <div class="form">
+          <input type="text" id="bCategory" placeholder="Category (e.g. Food)" list="cats">
+          <input type="number" id="bAmount" placeholder="Budget limit" step="0.01" min="0">
+          <button id="saveBudget" class="primary">Set Budget</button>
+        </div>
+        <div id="budgets"></div>
+      </section>
+    </div>
+
+    <div class="col">
+      <section class="panel">
+        <h2>Spending by Category</h2>
+        <div id="catBars"></div>
+      </section>
+
+      <section class="panel">
+        <div class="row between">
+          <h2>Transactions</h2>
+          <select id="fType">
+            <option value="">All</option>
+            <option value="EXPENSE">Expenses</option>
+            <option value="INCOME">Income</option>
+          </select>
+        </div>
+        <div class="tablewrap">
+          <table>
+            <thead><tr><th>Date</th><th>Category</th><th>Description</th><th class="r">Amount</th><th></th></tr></thead>
+            <tbody id="txBody"></tbody>
+          </table>
+        </div>
+      </section>
+    </div>
+  </div>
+</main>
+<div id="toast"></div>
+<script src="app.js"></script>
+</body>
+</html>
